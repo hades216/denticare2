@@ -20,6 +20,7 @@ const Doctor = () => (
       <div className="grid lg:grid-cols-2 gap-10 lg:gap-14">
         <DoctorCard
           image={drOmer}
+          imageClassName="scale-125 object-[center_30%]"
           alt="Asst. Prof. Dr. Muhammad Omer Siddiqui — Cosmetic Dentist at Denticare Dental Clinic Islamabad"
           name={<>Asst. Prof. Dr. Muhammad <span className="text-gradient">Omer Siddiqui</span></>}
           credentials="BDS, MHPE · PMDC Verified Dentist"
@@ -57,6 +58,7 @@ type StatItem = { icon: any; title: string; sub: string };
 
 const DoctorCard = ({
   image,
+  imageClassName,
   alt,
   name,
   credentials,
@@ -66,6 +68,7 @@ const DoctorCard = ({
   stats,
 }: {
   image: string;
+  imageClassName?: string;
   alt: string;
   name: React.ReactNode;
   credentials: string;
@@ -81,7 +84,7 @@ const DoctorCard = ({
         <img
           src={image}
           alt={alt}
-          className="w-full h-full object-cover object-top scale-110"
+          className={`w-full h-full object-cover object-top ${imageClassName ?? ""}`}
           loading="lazy"
         />
       </div>
