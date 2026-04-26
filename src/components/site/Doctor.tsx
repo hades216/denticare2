@@ -81,7 +81,7 @@ const DoctorCard = ({
         <img
           src={image}
           alt={alt}
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-cover object-top scale-110"
           loading="lazy"
         />
       </div>
