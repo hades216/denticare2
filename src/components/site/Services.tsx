@@ -8,6 +8,8 @@ import {
   Crown,
   Activity,
   ShieldCheck,
+  Pickaxe,
+  Layers,
 } from "lucide-react";
 import whitening from "@/assets/service-whitening.jpg";
 import implants from "@/assets/service-implants.jpg";
@@ -18,6 +20,8 @@ import scaling from "@/assets/service-scaling.jpg";
 import fillings from "@/assets/service-fillings.jpg";
 import braces from "@/assets/service-braces.jpg";
 import children from "@/assets/service-children.jpg";
+import extraction from "@/assets/service-extraction.jpg";
+import prosthodontics from "@/assets/service-prosthodontics.jpg";
 
 const services = [
   { icon: Sparkles, image: whitening, title: "Teeth Whitening", desc: "Brighten your smile with safe, professional whitening treatments." },
@@ -29,6 +33,8 @@ const services = [
   { icon: Stethoscope, image: fillings, title: "Permanent Fillings", desc: "Durable tooth-colored fillings that blend seamlessly." },
   { icon: Scissors, image: braces, title: "Braces & Orthodontics", desc: "Straighten teeth with modern braces and aligner solutions." },
   { icon: Baby, image: children, title: "Children Dentistry", desc: "Gentle, friendly paediatric dental care for little smiles." },
+  { icon: Pickaxe, image: extraction, title: "Extractions & Impactions", desc: "Safe, comfortable removal of damaged or impacted teeth by experts." },
+  { icon: Layers, image: prosthodontics, title: "Removable Prosthodontics", desc: "Custom dentures and removable prosthetics for a confident smile." },
 ];
 
 const Services = () => (
