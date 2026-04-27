@@ -1,0 +1,9 @@
+version: 1.0
+deployments:
+  - name: nodejs-app
+    type: nodejs
+    build:
+      command: npm run build
+      directory: dist
+    runtime:
+      command: npm start
