@@ -1,9 +1,7 @@
 version: 1.0
 deployments:
-  - name: nodejs-app
+  - name: static-site
     type: nodejs
     build:
       command: npm run build
-      directory: .
-    runtime:
-      command: npm start
+      directory: dist
