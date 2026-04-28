@@ -39,17 +39,6 @@ function AdminBlog() {
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
 
-  const handleNewPost = () => {
-    console.log("New Post clicked");
-    setEditing({ ...empty });
-  };
-
-  const handleAdminSignOut = async () => {
-    console.log("Sign out clicked");
-    await signOut();
-    navigate({ to: "/" });
-  };
-
   useEffect(() => {
     if (!loading && !user) navigate({ to: "/auth" });
   }, [loading, user, navigate]);
@@ -167,7 +156,7 @@ function AdminBlog() {
       <AnimatedBackground />
       <div className="relative z-10">
         <Navbar />
-        <main className="container pt-52 sm:pt-56 lg:pt-60 pb-20">
+        <main className="container pt-32 pb-20">
           <div className="flex items-center justify-between flex-wrap gap-4 mb-8">
             <div>
               <Link to="/blog" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-2">
@@ -178,10 +167,10 @@ function AdminBlog() {
               </h1>
             </div>
             <div className="flex gap-3">
-              <Button onClick={handleNewPost} variant="hero">
+              <Button onClick={() => setEditing({ ...empty })} variant="hero">
                 <Plus className="w-4 h-4" /> New Post
               </Button>
-              <Button onClick={handleAdminSignOut} variant="outline">
+              <Button onClick={() => signOut().then(() => navigate({ to: "/" }))} variant="outline">
                 <LogOut className="w-4 h-4" /> Sign out
               </Button>
             </div>
