@@ -1,7 +1,0 @@
-version: 1.0
-deployments:
-  - name: static-site
-    type: static
-    build:
-      command: npm run build
-      directory: .
