@@ -32,7 +32,7 @@ jobs:
     name: build denticare2
     needs: retrieve-project
     if: ${{ needs.retrieve-project.outputs.deployment-enabled == 'true' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       DEPLOYMENT_FOLDER: dist
     steps:
@@ -44,22 +44,30 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: v22.x
+          node-version: 20
           cache: 'npm'
 
-      - name: Debug Environment
+      - name: Environment Diagnostics
+        shell: bash
         run: |
-          node -v
-          npm -v
-          ls -R
+          echo "Current directory: $(pwd)"
+          echo "Node version: $(node -v)"
+          echo "NPM version: $(npm -v)"
+          echo "NPM location: $(which npm)"
+          echo "Shell: $SHELL"
+          ls -la
 
-      - name: Build Node assets
+      - name: Install Dependencies
+        shell: bash
+        run: |
+          npm install --no-audit --no-fund
+
+      - name: Build Assets
         env:
           CI: true
           SITE_URL: https://IONOS_DEPLOY_NOW_SITE_URL
         shell: bash
         run: |
-          npm install
           npm run build
 
       - name: Store deployment content
