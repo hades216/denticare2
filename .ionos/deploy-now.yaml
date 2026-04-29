@@ -4,4 +4,4 @@ deployments:
     type: static
     build:
       command: npm run build
-      directory: dist
+      directory: .
