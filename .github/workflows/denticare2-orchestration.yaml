@@ -29,14 +29,50 @@ jobs:
 
 
   build:
-    name: build
+    name: build denticare2
     needs: retrieve-project
     if: ${{ needs.retrieve-project.outputs.deployment-enabled == 'true' }}
-    uses: ./.github/workflows/denticare2-build.yaml
-    with:
-      site-url: https://IONOS_DEPLOY_NOW_SITE_URL
-      branch-id: ${{ needs.retrieve-project.outputs.branch-id }}
-    secrets: inherit
+    runs-on: ubuntu-latest
+    env:
+      DEPLOYMENT_FOLDER: dist
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: v22.x
+          cache: 'npm'
+
+      - name: Debug Environment
+        run: |
+          node -v
+          npm -v
+          ls -R
+
+      - name: Build Node assets
+        env:
+          CI: true
+          SITE_URL: https://IONOS_DEPLOY_NOW_SITE_URL
+        shell: bash
+        run: |
+          npm install
+          npm run build
+
+      - name: Store deployment content
+        uses: ionos-deploy-now/artifact-action@v1
+        with:
+          api-key: ${{ secrets.IONOS_API_KEY }}
+          service-host: api-us.ionos.space
+          project-id: 00b965dc-3224-4d71-84d0-6c4599f41b03
+          branch-id: ${{ needs.retrieve-project.outputs.branch-id }}
+          version: ${{ github.sha }}
+          folder: ${{ env.DEPLOYMENT_FOLDER }}
+          config-file: .ionos/deploy-now.yaml
+          action: upload
 
   deploy:
     name: trigger deployment
