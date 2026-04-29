@@ -31,13 +31,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: v22.x
+          cache: 'npm'
+
+      - name: Debug Environment
+        run: |
+          node -v
+          npm -v
+          ls -R
 
       - name: Build Node assets
         env:
           CI: true
           SITE_URL: ${{ inputs.site-url }}
+        shell: bash
         run: |
-          npm ci
+          npm install
           npm run build
 
 # Please do not touch the following action
@@ -50,5 +58,5 @@ jobs:
           branch-id: ${{ inputs.branch-id }}
           version: ${{ github.sha }}
           folder: ${{ env.DEPLOYMENT_FOLDER }}
-          config-file: .deploy-now/denticare2/config.yaml
+          config-file: .ionos/deploy-now.yaml
           action: upload
