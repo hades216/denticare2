@@ -7,7 +7,6 @@ import { PenLine, ArrowLeft, Calendar } from "lucide-react";
 import Navbar from "@/components/site/Navbar";
 import Footer from "@/components/site/Footer";
 import AnimatedBackground from "@/components/site/AnimatedBackground";
-import { toast } from "sonner";
 
 export const Route = createFileRoute("/blog/")({
   head: () => ({
@@ -37,27 +36,15 @@ function BlogList() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      setLoading(true);
-      try {
-        const { data, error } = await supabase
-          .from("blog_posts")
-          .select("id,title,slug,excerpt,cover_image_url,published_at,created_at")
-          .eq("published", true)
-          .order("published_at", { ascending: false });
-
-        if (error) {
-          console.error("Error fetching posts:", error);
-          toast.error("Failed to load blog posts");
-        }
+    supabase
+      .from("blog_posts")
+      .select("id,title,slug,excerpt,cover_image_url,published_at,created_at")
+      .eq("published", true)
+      .order("published_at", { ascending: false })
+      .then(({ data }) => {
         setPosts(data ?? []);
-      } catch (err) {
-        console.error("Unexpected error:", err);
-      } finally {
         setLoading(false);
-      }
-    };
-    fetchPosts();
+      });
   }, []);
 
   return (
