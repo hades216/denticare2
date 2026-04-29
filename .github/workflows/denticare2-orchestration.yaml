@@ -85,7 +85,7 @@ jobs:
           branch-id: ${{ needs.retrieve-project.outputs.branch-id }}
           version: ${{ github.sha }}
           folder: ${{ env.DEPLOYMENT_FOLDER }}
-          config-file: .deploy-now/config.yaml
+          config-file: .ionos/deploy-now.yaml
           action: upload
 
   deploy:
