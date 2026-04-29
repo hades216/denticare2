@@ -14,7 +14,7 @@ on:
         type: string
 
 env:
-  DEPLOYMENT_FOLDER: dist
+  DEPLOYMENT_FOLDER: public
 
 jobs:
 # Please do not rename this job
@@ -31,21 +31,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: v22.x
-          cache: 'npm'
-
-      - name: Debug Environment
-        run: |
-          node -v
-          npm -v
-          ls -R
 
       - name: Build Node assets
         env:
           CI: true
           SITE_URL: ${{ inputs.site-url }}
-        shell: bash
         run: |
-          npm install
+          npm ci
           npm run build
 
 # Please do not touch the following action
@@ -54,9 +46,9 @@ jobs:
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-us.ionos.space
-          project-id: 00b965dc-3224-4d71-84d0-6c4599f41b03
+          project-id: a8889053-90be-422c-b58b-d154a2f3c52e
           branch-id: ${{ inputs.branch-id }}
           version: ${{ github.sha }}
           folder: ${{ env.DEPLOYMENT_FOLDER }}
-          config-file: .ionos/deploy-now.yaml
+          config-file: .deploy-now/denticare2/config.yaml
           action: upload
