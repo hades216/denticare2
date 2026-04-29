@@ -70,6 +70,12 @@ jobs:
         run: |
           npm run build
 
+      - name: Upload dist to Github
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-folder
+          path: dist
+
       - name: Store deployment content
         uses: ionos-deploy-now/artifact-action@v1
         with:
