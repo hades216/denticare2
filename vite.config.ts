@@ -10,12 +10,8 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  plugins: [
-    tanstackRouter(),
-    react(),
-    tailwindcss(),
-  ],
+  plugins: [tanstackRouter(), react(), tailwindcss()],
   build: {
     outDir: "dist",
-  }
+  },
 });

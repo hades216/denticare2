@@ -18,14 +18,13 @@ const Hero = () => {
           </div>
 
           <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-semibold leading-[1.08] text-primary-deep">
-            Your Smile,{" "}
-            <span className="text-gradient">Perfected</span> with Care.
+            Your Smile, <span className="text-gradient">Perfected</span> with Care.
           </h1>
 
           <p className="mt-5 sm:mt-6 text-base sm:text-lg text-muted-foreground max-w-xl">
-            Premium dental care in Islamabad by Asst. Prof. Dr. Muhammad Omer
-            Siddiqui. From cosmetic dentistry to advanced implants — experience
-            comfort, precision and a smile you'll love.
+            Premium dental care in Islamabad by Asst. Prof. Dr. Muhammad Omer Siddiqui. From
+            cosmetic dentistry to advanced implants — experience comfort, precision and a smile
+            you'll love.
           </p>
 
           <div className="mt-7 sm:mt-8 flex flex-wrap gap-3 sm:gap-4">
@@ -55,7 +54,10 @@ const Hero = () => {
                 <div className="text-xs text-muted-foreground">Open Today</div>
                 <div className="text-sm font-semibold text-primary-deep">5 PM – 8:30 PM</div>
               </div>
-              <a href="tel:+923335299143" className="glass rounded-3xl p-5 shadow-elegant transition-all hover:shadow-glow">
+              <a
+                href="tel:+923335299143"
+                className="glass rounded-3xl p-5 shadow-elegant transition-all hover:shadow-glow"
+              >
                 <Phone className="w-5 h-5 text-primary mb-2" />
                 <div className="text-xs text-muted-foreground">Call Us</div>
                 <div className="text-sm font-semibold text-primary-deep">0333 5299143</div>

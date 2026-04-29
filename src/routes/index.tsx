@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Toaster as Sonner } from "@/components/ui/sonner";
 import AnimatedBackground from "@/components/site/AnimatedBackground";
 import Navbar from "@/components/site/Navbar";
 import Hero from "@/components/site/Hero";
@@ -32,7 +31,6 @@ function Index() {
         </main>
         <Footer />
       </div>
-      <Sonner />
     </div>
   );
 }

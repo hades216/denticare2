@@ -86,7 +86,9 @@ const Blog = () => {
                     <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
                       <Calendar className="w-3.5 h-3.5" />
                       {new Date(p.published_at ?? p.created_at).toLocaleDateString(undefined, {
-                        month: "short", day: "numeric", year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
                       })}
                     </div>
                     <h3 className="font-display text-xl font-semibold text-primary-deep group-hover:text-primary transition-colors line-clamp-2">

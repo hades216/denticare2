@@ -1,8 +1,33 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { Outlet, Link, createRootRoute, useRouterState } from "@tanstack/react-router";
 import { AuthProvider } from "@/hooks/useAuth";
 import { Toaster } from "@/components/ui/sonner";
 
-import appCss from "../styles.css?url";
+export const Route = createRootRoute({
+  head: () => ({
+    meta: [
+      { charSet: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { title: "Denticare Dental Clinic Islamabad" },
+      {
+        name: "description",
+        content:
+          "Modern dental care in Islamabad for whitening, implants, veneers, crowns, root canals, braces, and family dentistry.",
+      },
+      { name: "author", content: "Denticare" },
+      { property: "og:title", content: "Denticare Dental Clinic Islamabad" },
+      {
+        property: "og:description",
+        content: "Book expert dental care in Islamabad with Denticare.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+      { name: "twitter:site", content: "@Lovable" },
+    ],
+  }),
+  component: RootComponent,
+  notFoundComponent: NotFoundComponent,
+});
 
 function NotFoundComponent() {
   return (
@@ -26,47 +51,21 @@ function NotFoundComponent() {
   );
 }
 
-export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Denticare Dental Clinic Islamabad" },
-      { name: "description", content: "Modern dental care in Islamabad for whitening, implants, veneers, crowns, root canals, braces, and family dentistry." },
-      { name: "author", content: "Denticare" },
-      { property: "og:title", content: "Denticare Dental Clinic Islamabad" },
-      { property: "og:description", content: "Book expert dental care in Islamabad with Denticare." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
-  }),
-  shellComponent: RootShell,
-  component: RootComponent,
-  notFoundComponent: NotFoundComponent,
-});
-
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
-
 function RootComponent() {
+  const { location } = useRouterState();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, location.hash]);
+
   return (
     <AuthProvider>
       <Outlet />

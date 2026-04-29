@@ -64,12 +64,16 @@ const Booking = () => {
               Schedule Your <span className="text-gradient">Visit</span>
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Fill the form and we'll confirm your appointment shortly. Walk-ins
-              also welcome during clinic hours.
+              Fill the form and we'll confirm your appointment shortly. Walk-ins also welcome during
+              clinic hours.
             </p>
 
             <div className="mt-8 space-y-4">
-              <InfoCard icon={MapPin} title="Visit Us" text="Options Arcade, Main Road, PWD, Islamabad, 44000" />
+              <InfoCard
+                icon={MapPin}
+                title="Visit Us"
+                text="Options Arcade, Main Road, PWD, Islamabad, 44000"
+              />
               <InfoCard icon={Phone} title="Call Us" text="0333 5299143" href="tel:+923335299143" />
               <div className="p-5 rounded-2xl bg-card-gradient border border-border/60 shadow-soft">
                 <div className="flex items-start gap-4">
@@ -90,7 +94,15 @@ const Booking = () => {
                       ].map(([day, time]) => (
                         <li key={day} className="flex justify-between gap-4">
                           <span className="text-muted-foreground">{day}</span>
-                          <span className={time === "Closed" ? "text-accent font-semibold" : "text-primary-deep font-medium"}>{time}</span>
+                          <span
+                            className={
+                              time === "Closed"
+                                ? "text-accent font-semibold"
+                                : "text-primary-deep font-medium"
+                            }
+                          >
+                            {time}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -114,12 +126,13 @@ const Booking = () => {
                   </h3>
                   <p className="mt-3 text-muted-foreground max-w-md mx-auto">
                     Thank you, {form.name}. Our team will call you on{" "}
-                    <span className="font-semibold text-primary-deep">{form.phone}</span>{" "}
-                    shortly to confirm your appointment for{" "}
+                    <span className="font-semibold text-primary-deep">{form.phone}</span> shortly to
+                    confirm your appointment for{" "}
                     <span className="font-semibold text-primary-deep">{form.service}</span> on{" "}
                     <span className="font-semibold text-primary-deep">
                       {form.date} at {form.time}
-                    </span>.
+                    </span>
+                    .
                   </p>
                   <Button
                     variant="outline"
@@ -127,8 +140,13 @@ const Booking = () => {
                     onClick={() => {
                       setSubmitted(false);
                       setForm({
-                        name: "", phone: "", email: "", service: "",
-                        date: "", time: "", notes: "",
+                        name: "",
+                        phone: "",
+                        email: "",
+                        service: "",
+                        date: "",
+                        time: "",
+                        notes: "",
                       });
                     }}
                   >
@@ -176,7 +194,9 @@ const Booking = () => {
                       </SelectTrigger>
                       <SelectContent>
                         {services.map((s) => (
-                          <SelectItem key={s} value={s}>{s}</SelectItem>
+                          <SelectItem key={s} value={s}>
+                            {s}
+                          </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
@@ -201,8 +221,18 @@ const Booking = () => {
                           <SelectValue placeholder="Select time" />
                         </SelectTrigger>
                         <SelectContent>
-                          {["5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM"].map((t) => (
-                            <SelectItem key={t} value={t}>{t}</SelectItem>
+                          {[
+                            "5:00 PM",
+                            "5:30 PM",
+                            "6:00 PM",
+                            "6:30 PM",
+                            "7:00 PM",
+                            "7:30 PM",
+                            "8:00 PM",
+                          ].map((t) => (
+                            <SelectItem key={t} value={t}>
+                              {t}
+                            </SelectItem>
                           ))}
                         </SelectContent>
                       </Select>

@@ -47,14 +47,13 @@ const About = () => (
           About Denticare
         </span>
         <h2 className="font-display text-4xl lg:text-5xl font-semibold mt-3 text-primary-deep">
-          A Modern Clinic Built on{" "}
-          <span className="text-gradient">Trust & Expertise</span>
+          A Modern Clinic Built on <span className="text-gradient">Trust & Expertise</span>
         </h2>
         <p className="mt-5 text-muted-foreground leading-relaxed">
-          Denticare Dental Clinic in Islamabad is led by Asst. Prof. Dr. Muhammad
-          Omer Siddiqui — a PMDC verified specialist dedicated to ethical,
-          comfortable and world-class dental care. Whether you're here for a
-          routine check-up or a complete smile makeover, you're in expert hands.
+          Denticare Dental Clinic in Islamabad is led by Asst. Prof. Dr. Muhammad Omer Siddiqui — a
+          PMDC verified specialist dedicated to ethical, comfortable and world-class dental care.
+          Whether you're here for a routine check-up or a complete smile makeover, you're in expert
+          hands.
         </p>
 
         <ul className="mt-8 space-y-4">

@@ -53,9 +53,7 @@ function AuthPage() {
     <div className="min-h-screen grid place-items-center bg-background px-4 py-16">
       <div className="w-full max-w-md bg-card-gradient border border-border/60 rounded-3xl p-8 shadow-elegant">
         <div className="text-center mb-6">
-          <h1 className="font-display text-3xl font-semibold text-primary-deep">
-            Admin Login
-          </h1>
+          <h1 className="font-display text-3xl font-semibold text-primary-deep">Admin Login</h1>
           <p className="text-sm text-muted-foreground mt-2">
             Sign in to manage the Denticare blog.
           </p>

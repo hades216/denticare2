@@ -13,7 +13,9 @@ import Navbar from "@/components/site/Navbar";
 import AnimatedBackground from "@/components/site/AnimatedBackground";
 
 export const Route = createFileRoute("/admin/blog")({
-  head: () => ({ meta: [{ title: "Manage Blog — Denticare" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({
+    meta: [{ title: "Manage Blog — Denticare" }, { name: "robots", content: "noindex" }],
+  }),
   component: AdminBlog,
 });
 
@@ -40,12 +42,10 @@ function AdminBlog() {
   const [uploading, setUploading] = useState(false);
 
   const handleNewPost = () => {
-    console.log("New Post clicked");
     setEditing({ ...empty });
   };
 
   const handleAdminSignOut = async () => {
-    console.log("Sign out clicked");
     await signOut();
     navigate({ to: "/" });
   };
@@ -77,8 +77,12 @@ function AdminBlog() {
             Your account doesn't have owner privileges. Ask the site owner to grant you access.
           </p>
           <div className="mt-6 flex justify-center gap-3">
-            <Button asChild variant="outline"><Link to="/">Go home</Link></Button>
-            <Button onClick={() => signOut()} variant="hero">Sign out</Button>
+            <Button asChild variant="outline">
+              <Link to="/">Go home</Link>
+            </Button>
+            <Button onClick={() => signOut()} variant="hero">
+              Sign out
+            </Button>
           </div>
         </div>
       </div>
@@ -115,7 +119,7 @@ function AdminBlog() {
     setSaving(true);
     const baseSlug = slugify(editing.title);
     const isNew = !editing.id;
-    const payload: any = {
+    const payload: Partial<Post> & { author_id?: string; slug?: string } = {
       title: editing.title.trim(),
       excerpt: editing.excerpt.trim() || null,
       content: editing.content.trim(),
@@ -130,7 +134,12 @@ function AdminBlog() {
       payload.author_id = user.id;
       result = await supabase.from("blog_posts").insert(payload).select().single();
     } else {
-      result = await supabase.from("blog_posts").update(payload).eq("id", editing.id).select().single();
+      result = await supabase
+        .from("blog_posts")
+        .update(payload)
+        .eq("id", editing.id)
+        .select()
+        .single();
     }
     setSaving(false);
 
@@ -170,7 +179,10 @@ function AdminBlog() {
         <main className="container pt-52 sm:pt-56 lg:pt-60 pb-20">
           <div className="flex items-center justify-between flex-wrap gap-4 mb-8">
             <div>
-              <Link to="/blog" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-2">
+              <Link
+                to="/blog"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-2"
+              >
                 <ArrowLeft className="w-4 h-4" /> Back to blog
               </Link>
               <h1 className="font-display text-3xl lg:text-4xl font-semibold text-primary-deep">
@@ -194,11 +206,18 @@ function AdminBlog() {
               </h2>
               <div>
                 <Label className="mb-2 block">Title *</Label>
-                <Input value={editing.title} onChange={(e) => setEditing({ ...editing, title: e.target.value })} />
+                <Input
+                  value={editing.title}
+                  onChange={(e) => setEditing({ ...editing, title: e.target.value })}
+                />
               </div>
               <div>
                 <Label className="mb-2 block">Excerpt (short preview)</Label>
-                <Input value={editing.excerpt} onChange={(e) => setEditing({ ...editing, excerpt: e.target.value })} maxLength={200} />
+                <Input
+                  value={editing.excerpt}
+                  onChange={(e) => setEditing({ ...editing, excerpt: e.target.value })}
+                  maxLength={200}
+                />
               </div>
               <div>
                 <Label className="mb-2 block">Cover image</Label>
@@ -217,7 +236,11 @@ function AdminBlog() {
                   {uploading && <span className="text-sm text-muted-foreground">Uploading...</span>}
                 </div>
                 {editing.cover_image_url && (
-                  <img src={editing.cover_image_url} alt="" className="mt-3 max-h-40 rounded-xl object-cover" />
+                  <img
+                    src={editing.cover_image_url}
+                    alt=""
+                    className="mt-3 max-h-40 rounded-xl object-cover"
+                  />
                 )}
               </div>
               <div>
@@ -248,11 +271,18 @@ function AdminBlog() {
               <p className="text-muted-foreground">No posts yet. Create your first one!</p>
             )}
             {posts.map((p) => (
-              <div key={p.id} className="bg-card-gradient rounded-2xl p-5 border border-border/60 flex items-start justify-between gap-4 flex-wrap">
+              <div
+                key={p.id}
+                className="bg-card-gradient rounded-2xl p-5 border border-border/60 flex items-start justify-between gap-4 flex-wrap"
+              >
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <h3 className="font-display text-lg font-semibold text-primary-deep truncate">{p.title}</h3>
-                    <span className={`text-xs px-2 py-0.5 rounded-full ${p.published ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"}`}>
+                    <h3 className="font-display text-lg font-semibold text-primary-deep truncate">
+                      {p.title}
+                    </h3>
+                    <span
+                      className={`text-xs px-2 py-0.5 rounded-full ${p.published ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"}`}
+                    >
                       {p.published ? "Published" : "Draft"}
                     </span>
                   </div>
@@ -262,13 +292,19 @@ function AdminBlog() {
                   <Button size="sm" variant="outline" onClick={() => togglePublish(p)}>
                     {p.published ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </Button>
-                  <Button size="sm" variant="outline" onClick={() => setEditing({
-                    id: p.id,
-                    title: p.title,
-                    excerpt: p.excerpt ?? "",
-                    content: p.content,
-                    cover_image_url: p.cover_image_url ?? "",
-                  })}>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() =>
+                      setEditing({
+                        id: p.id,
+                        title: p.title,
+                        excerpt: p.excerpt ?? "",
+                        content: p.content,
+                        cover_image_url: p.cover_image_url ?? "",
+                      })
+                    }
+                  >
                     <Pencil className="w-4 h-4" />
                   </Button>
                   <Button size="sm" variant="outline" onClick={() => remove(p.id)}>

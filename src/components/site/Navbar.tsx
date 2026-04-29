@@ -22,12 +22,10 @@ const Navbar = () => {
   const { user, isOwner, signOut } = useAuth();
 
   const handleWriteBlog = () => {
-    console.log("Write Blog clicked");
     navigate({ to: "/admin/blog" });
   };
 
   const handleLogout = async () => {
-    console.log("Sign out clicked");
     await signOut();
     navigate({ to: "/" });
   };
@@ -46,9 +44,7 @@ const Navbar = () => {
     >
       <div
         className={`container transition-all duration-500 ${
-          scrolled
-            ? "glass shadow-soft rounded-2xl"
-            : "bg-transparent"
+          scrolled ? "glass shadow-soft rounded-2xl" : "bg-transparent"
         }`}
       >
         <div className="flex items-center justify-between px-4 py-3">
@@ -90,11 +86,15 @@ const Navbar = () => {
               </Button>
             ) : (
               <Button asChild variant="ghost" size="sm">
-                <Link to="/auth"><LogIn className="w-4 h-4" /> Login</Link>
+                <Link to="/auth">
+                  <LogIn className="w-4 h-4" /> Login
+                </Link>
               </Button>
             )}
             <Button asChild variant="hero" size="lg">
-              <a href="/#book" className="whitespace-nowrap text-base">Book Appointment</a>
+              <a href="/#book" className="whitespace-nowrap text-base">
+                Book Appointment
+              </a>
             </Button>
           </div>
 
@@ -161,4 +161,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar;

@@ -22,7 +22,11 @@ const Doctor = () => (
           image={drOmer}
           imageClassName="scale-150 object-[center_25%]"
           alt="Asst. Prof. Dr. Muhammad Omer Siddiqui — Cosmetic Dentist at Denticare Dental Clinic Islamabad"
-          name={<>Asst. Prof. Dr. Muhammad <span className="text-gradient">Omer Siddiqui</span></>}
+          name={
+            <>
+              Asst. Prof. Dr. Muhammad <span className="text-gradient">Omer Siddiqui</span>
+            </>
+          }
           credentials="BDS, MHPE · Cosmetic Dentist"
           badge="BDS · MHPE"
           role="Lead Dentist"
@@ -37,7 +41,11 @@ const Doctor = () => (
         <DoctorCard
           image={drEruj}
           alt="Prof. Dr. Eruj Shuja — Oral & Maxillofacial Surgeon at Denticare Dental Clinic Islamabad"
-          name={<>Prof. Dr. <span className="text-gradient">Eruj Shuja</span></>}
+          name={
+            <>
+              Prof. Dr. <span className="text-gradient">Eruj Shuja</span>
+            </>
+          }
           credentials="BDS, FCPS, CHPE · Oral & Maxillofacial Surgeon"
           badge="BDS · FCPS"
           role="Oral Surgeon"
@@ -100,9 +108,7 @@ const DoctorCard = ({
     </div>
 
     <div className="mt-10">
-      <h3 className="font-display text-2xl lg:text-3xl font-semibold text-primary-deep">
-        {name}
-      </h3>
+      <h3 className="font-display text-2xl lg:text-3xl font-semibold text-primary-deep">{name}</h3>
       <p className="mt-2 text-primary font-medium text-sm">{credentials}</p>
       <p className="mt-4 text-muted-foreground leading-relaxed">{bio}</p>
 

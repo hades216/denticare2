@@ -57,7 +57,10 @@ function BlogPostPage() {
       <div className="relative z-10">
         <Navbar />
         <main className="container pt-32 pb-20 max-w-3xl">
-          <Link to="/blog" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-6">
+          <Link
+            to="/blog"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-6"
+          >
             <ArrowLeft className="w-4 h-4" /> All posts
           </Link>
 
@@ -66,7 +69,9 @@ function BlogPostPage() {
           ) : missing || !post ? (
             <div className="text-center py-20">
               <h1 className="font-display text-3xl text-primary-deep">Post not found</h1>
-              <p className="text-muted-foreground mt-2">This blog post may have been removed or unpublished.</p>
+              <p className="text-muted-foreground mt-2">
+                This blog post may have been removed or unpublished.
+              </p>
             </div>
           ) : (
             <article>
@@ -88,9 +93,7 @@ function BlogPostPage() {
               <h1 className="font-display text-4xl lg:text-5xl font-semibold text-primary-deep leading-tight">
                 {post.title}
               </h1>
-              {post.excerpt && (
-                <p className="mt-5 text-lg text-muted-foreground">{post.excerpt}</p>
-              )}
+              {post.excerpt && <p className="mt-5 text-lg text-muted-foreground">{post.excerpt}</p>}
               <div className="mt-8 prose prose-lg max-w-none text-foreground/85 leading-relaxed whitespace-pre-line">
                 {post.content}
               </div>

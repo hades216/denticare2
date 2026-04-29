@@ -6,10 +6,16 @@ const LAST_REVIEW_KEY = "denticare_last_random_review";
 
 const pickRandomReview = () => {
   const lastIndex = Number(localStorage.getItem(LAST_REVIEW_KEY));
-  const pool = clinicReviews.length > 1
-    ? clinicReviews.map((review, index) => ({ review, index })).filter(({ index }) => index !== lastIndex)
-    : clinicReviews.map((review, index) => ({ review, index }));
-  const selected = pool[Math.floor(Math.random() * pool.length)] ?? { review: clinicReviews[0], index: 0 };
+  const pool =
+    clinicReviews.length > 1
+      ? clinicReviews
+          .map((review, index) => ({ review, index }))
+          .filter(({ index }) => index !== lastIndex)
+      : clinicReviews.map((review, index) => ({ review, index }));
+  const selected = pool[Math.floor(Math.random() * pool.length)] ?? {
+    review: clinicReviews[0],
+    index: 0,
+  };
   localStorage.setItem(LAST_REVIEW_KEY, String(selected.index));
   return selected.review;
 };

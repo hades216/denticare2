@@ -12,7 +12,10 @@ export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
       { title: "Blog — Denticare Dental Clinic" },
-      { name: "description", content: "Dental tips, treatment guides, and clinic updates from Denticare Islamabad." },
+      {
+        name: "description",
+        content: "Dental tips, treatment guides, and clinic updates from Denticare Islamabad.",
+      },
       { property: "og:title", content: "Denticare Blog" },
       { property: "og:description", content: "Dental tips, treatment guides, and clinic updates." },
     ],
@@ -55,7 +58,10 @@ function BlogList() {
         <main className="container pt-32 pb-20">
           <div className="flex items-center justify-between flex-wrap gap-4 mb-10">
             <div>
-              <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-3">
+              <Link
+                to="/"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-3"
+              >
                 <ArrowLeft className="w-4 h-4" /> Home
               </Link>
               <h1 className="font-display text-4xl lg:text-5xl font-semibold text-primary-deep">

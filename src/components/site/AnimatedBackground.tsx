@@ -9,7 +9,7 @@ const AnimatedBackground = () => (
         const left = (i * 37) % 100;
         const delay = (i * 0.8) % 14;
         const duration = 14 + ((i * 3) % 16);
-        const opacity = 0.25 + ((i % 5) * 0.1);
+        const opacity = 0.25 + (i % 5) * 0.1;
         return (
           <span
             key={i}

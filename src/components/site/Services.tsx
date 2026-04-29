@@ -24,17 +24,72 @@ import extraction from "@/assets/service-extraction.jpg";
 import prosthodontics from "@/assets/service-prosthodontics.jpg";
 
 const services = [
-  { icon: Sparkles, image: whitening, title: "Teeth Whitening", desc: "Brighten your smile with safe, professional whitening treatments." },
-  { icon: Wrench, image: implants, title: "Dental Implants", desc: "Permanent, natural-looking tooth replacements that last a lifetime." },
-  { icon: Smile, image: veneers, title: "Veneers", desc: "Custom porcelain veneers for a flawless Hollywood smile." },
-  { icon: Crown, image: crowns, title: "Crowns & Bridges", desc: "Restore strength and aesthetics with premium zirconia crowns and bridges." },
-  { icon: Activity, image: rootcanal, title: "Root Canal Treatment", desc: "Pain-free, modern endodontic care to save your natural teeth." },
-  { icon: ShieldCheck, image: scaling, title: "Scaling & Polishing", desc: "Deep cleaning to keep your gums healthy and teeth shining." },
-  { icon: Stethoscope, image: fillings, title: "Permanent Fillings", desc: "Durable tooth-colored fillings that blend seamlessly." },
-  { icon: Scissors, image: braces, title: "Braces & Orthodontics", desc: "Straighten teeth with modern braces and aligner solutions." },
-  { icon: Baby, image: children, title: "Children Dentistry", desc: "Gentle, friendly paediatric dental care for little smiles." },
-  { icon: Pickaxe, image: extraction, title: "Extractions & Impactions", desc: "Safe, comfortable removal of damaged or impacted teeth by experts." },
-  { icon: Layers, image: prosthodontics, title: "Removable Prosthodontics", desc: "Custom dentures and removable prosthetics for a confident smile." },
+  {
+    icon: Sparkles,
+    image: whitening,
+    title: "Teeth Whitening",
+    desc: "Brighten your smile with safe, professional whitening treatments.",
+  },
+  {
+    icon: Wrench,
+    image: implants,
+    title: "Dental Implants",
+    desc: "Permanent, natural-looking tooth replacements that last a lifetime.",
+  },
+  {
+    icon: Smile,
+    image: veneers,
+    title: "Veneers",
+    desc: "Custom porcelain veneers for a flawless Hollywood smile.",
+  },
+  {
+    icon: Crown,
+    image: crowns,
+    title: "Crowns & Bridges",
+    desc: "Restore strength and aesthetics with premium zirconia crowns and bridges.",
+  },
+  {
+    icon: Activity,
+    image: rootcanal,
+    title: "Root Canal Treatment",
+    desc: "Pain-free, modern endodontic care to save your natural teeth.",
+  },
+  {
+    icon: ShieldCheck,
+    image: scaling,
+    title: "Scaling & Polishing",
+    desc: "Deep cleaning to keep your gums healthy and teeth shining.",
+  },
+  {
+    icon: Stethoscope,
+    image: fillings,
+    title: "Permanent Fillings",
+    desc: "Durable tooth-colored fillings that blend seamlessly.",
+  },
+  {
+    icon: Scissors,
+    image: braces,
+    title: "Braces & Orthodontics",
+    desc: "Straighten teeth with modern braces and aligner solutions.",
+  },
+  {
+    icon: Baby,
+    image: children,
+    title: "Children Dentistry",
+    desc: "Gentle, friendly paediatric dental care for little smiles.",
+  },
+  {
+    icon: Pickaxe,
+    image: extraction,
+    title: "Extractions & Impactions",
+    desc: "Safe, comfortable removal of damaged or impacted teeth by experts.",
+  },
+  {
+    icon: Layers,
+    image: prosthodontics,
+    title: "Removable Prosthodontics",
+    desc: "Custom dentures and removable prosthetics for a confident smile.",
+  },
 ];
 
 const Services = () => (
@@ -45,12 +100,11 @@ const Services = () => (
           Our Services
         </span>
         <h2 className="font-display text-4xl lg:text-5xl font-semibold mt-3 text-primary-deep">
-          Complete Dental Care{" "}
-          <span className="text-gradient">Under One Roof</span>
+          Complete Dental Care <span className="text-gradient">Under One Roof</span>
         </h2>
         <p className="mt-4 text-muted-foreground">
-          From routine cleanings to advanced cosmetic procedures, Denticare offers
-          a full spectrum of premium dental treatments.
+          From routine cleanings to advanced cosmetic procedures, Denticare offers a full spectrum
+          of premium dental treatments.
         </p>
       </div>
 
