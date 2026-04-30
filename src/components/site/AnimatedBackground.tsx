@@ -1,4 +1,4 @@
-const PARTICLES = Array.from({ length: 28 });
+const PARTICLES = Array.from({ length: 12 });
 
 const AnimatedBackground = () => (
   <div className="animated-bg" aria-hidden="true">

@@ -109,7 +109,7 @@ const Navbar = () => {
 
         {open && (
           <div className="lg:hidden px-4 pb-4 animate-fade-in">
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 bg-background/95 backdrop-blur-md rounded-2xl p-4 shadow-elegant mt-2">
               {links.map((l) => (
                 <a
                   key={l.href}

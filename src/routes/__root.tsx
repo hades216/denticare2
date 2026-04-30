@@ -55,15 +55,20 @@ function RootComponent() {
   const { location } = useRouterState();
 
   useEffect(() => {
-    if (location.hash) {
-      const id = location.hash.replace("#", "");
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+    const handleScroll = () => {
+      if (location.hash) {
+        const id = location.hash.replace("#", "");
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
-    } else {
-      window.scrollTo(0, 0);
-    }
+    };
+
+    const rafId = requestAnimationFrame(handleScroll);
+    return () => cancelAnimationFrame(rafId);
   }, [location.pathname, location.hash]);
 
   return (

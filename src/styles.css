@@ -335,7 +335,6 @@
   animation-name: particle-rise;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  will-change: transform, opacity;
 }
 @keyframes particle-rise {
   0% {
