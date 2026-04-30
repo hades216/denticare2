@@ -62,14 +62,19 @@ Please confirm my booking.`.trim();
     const whatsappUrl = `https://wa.me/923335299143?text=${encodedMessage}`;
 
     setSubmitted(true);
-    toast.success("Appointment requested!", {
-      description: "Redirecting you to WhatsApp to finalize your booking...",
+    toast.success("Redirecting...", {
+      description: "Opening WhatsApp with your details...",
     });
 
-    // Small delay to show the success message before redirecting
+    // Attempt immediate redirect
+    window.location.href = whatsappUrl;
+
+    // Fallback delay for UI consistency if redirect is slightly slow
     setTimeout(() => {
-      window.location.href = whatsappUrl;
-    }, 1200);
+      if (window.location.href !== whatsappUrl) {
+        window.location.href = whatsappUrl;
+      }
+    }, 500);
   };
 
   return (
@@ -142,36 +147,41 @@ Please confirm my booking.`.trim();
                     <CheckCircle2 className="w-10 h-10" />
                   </div>
                   <h3 className="font-display text-3xl font-semibold text-primary-deep">
-                    Request Received!
+                    Almost There!
                   </h3>
                   <p className="mt-3 text-muted-foreground max-w-md mx-auto">
-                    Thank you, {form.name}. Our team will call you on{" "}
-                    <span className="font-semibold text-primary-deep">{form.phone}</span> shortly to
-                    confirm your appointment for{" "}
-                    <span className="font-semibold text-primary-deep">{form.service}</span> on{" "}
-                    <span className="font-semibold text-primary-deep">
-                      {form.date} at {form.time}
-                    </span>
-                    .
+                    Please click the button below to send your appointment details to us on WhatsApp and finalize your booking.
                   </p>
                   <Button
-                    variant="outline"
-                    className="mt-8"
+                    variant="hero"
+                    size="xl"
+                    className="mt-8 w-full sm:w-auto"
                     onClick={() => {
-                      setSubmitted(false);
-                      setForm({
-                        name: "",
-                        phone: "",
-                        email: "",
-                        service: "",
-                        date: "",
-                        time: "",
-                        notes: "",
-                      });
+                      const message = `Hello Denticare! I would like to book an appointment:
+    
+- *Name:* ${form.name}
+- *Phone:* ${form.phone}
+- *Service:* ${form.service}
+- *Date:* ${form.date}
+- *Time:* ${form.time}
+${form.notes ? `- *Notes:* ${form.notes}` : ""}
+
+Please confirm my booking.`.trim();
+                      window.location.href = `https://wa.me/923335299143?text=${encodeURIComponent(message)}`;
                     }}
                   >
-                    Book Another
+                    Open WhatsApp Chat
                   </Button>
+                  <div className="mt-6">
+                    <button
+                      className="text-sm text-muted-foreground underline hover:text-primary transition-colors"
+                      onClick={() => {
+                        setSubmitted(false);
+                      }}
+                    >
+                      Go back to form
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
