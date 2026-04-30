@@ -46,10 +46,30 @@ const Booking = () => {
       toast.error("Please fill in all required fields.");
       return;
     }
+
+    const message = `Hello Denticare! I would like to book an appointment:
+    
+- *Name:* ${form.name}
+- *Phone:* ${form.phone}
+- *Service:* ${form.service}
+- *Date:* ${form.date}
+- *Time:* ${form.time}
+${form.notes ? `- *Notes:* ${form.notes}` : ""}
+
+Please confirm my booking.`.trim();
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/923335299143?text=${encodedMessage}`;
+
     setSubmitted(true);
     toast.success("Appointment requested!", {
-      description: `We'll confirm your ${form.service} on ${form.date} at ${form.time} shortly.`,
+      description: "Redirecting you to WhatsApp to finalize your booking...",
     });
+
+    // Small delay to show the success message before redirecting
+    setTimeout(() => {
+      window.location.href = whatsappUrl;
+    }, 1200);
   };
 
   return (
